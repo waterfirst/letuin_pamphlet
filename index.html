@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디스플레이 산업과 기술 현황</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* 헤더 섹션 */
+        .header {
+            background: linear-gradient(135deg, #4f6cf0 0%, #3b82f6 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .brand-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .logo {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        /* 네비게이션 */
+        .nav {
+            background: #1e293b;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 20px 25px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #3b82f6;
+            border-bottom-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        /* 콘텐츠 컨테이너 */
+        .content-container {
+            min-height: 600px;
+        }
+
+        /* 섹션 공통 스타일 */
+        .section {
+            display: none;
+            padding: 60px 40px;
+            min-height: 600px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #4f6cf0, #3b82f6);
+            border-radius: 2px;
+        }
+
+        /* 타임라인 스타일 */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4f6cf0, #3b82f6);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        .timeline-year {
+            flex: 0 0 120px;
+            background: linear-gradient(135deg, #4f6cf0, #3b82f6);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            font-size: 1.1em;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            margin: 0 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-text {
+            flex: 1;
+        }
+
+        .timeline-image {
+            flex: 0 0 200px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content h3 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item:nth-child(odd) .tech-tags {
+            justify-content: flex-end;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            color: #3730a3;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        /* 산업 동향 카드 뉴스 스타일 */
+        .industry-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .industry-header {
+            background: linear-gradient(135deg, #4f6cf0, #3b82f6);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .industry-header h3 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .industry-header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .industry-timeline {
+            padding: 30px;
+        }
+
+        .industry-era {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .era-title {
+            background: #f8fafc;
+            color: #3b82f6;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .countries-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .country-bubble {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .country-bubble.dominant {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-color: #3b82f6;
+            transform: scale(1.05);
+        }
+
+        .country-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .country-flag {
+            font-size: 1.3em;
+        }
+
+        .company-list {
+            color: #6b7280;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .company-list.highlight {
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* 업체 동향 테이블 스타일 */
+        .company-section {
+            margin-bottom: 60px;
+        }
+
+        .company-section-title {
+            font-size: 1.8em;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.2em;
+        }
+
+        .company-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .company-table th {
+            background: linear-gradient(135deg, #4f6cf0, #3b82f6);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .company-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+
+        .company-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .company-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .process-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .process-description {
+            color: #6b7280;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .company-item-table {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .company-item-table.dominant {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 1px solid #3b82f6;
+        }
+
+        .company-name-table {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .company-specialty {
+            margin-left: auto;
+            font-size: 0.8em;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* 최신 기술 트렌드 스타일 */
+        .keyword-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .keyword-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+        }
+
+        .keyword-card.automotive { border-top-color: #f59e0b; }
+        .keyword-card.microled { border-top-color: #8b5cf6; }
+        .keyword-card.flexible { border-top-color: #10b981; }
+        .keyword-card.quantum { border-top-color: #ef4444; }
+
+        .keyword-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .keyword-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .keyword-card h4 {
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+
+        .keyword-card p {
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .feature-list li {
+            padding: 5px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .companies-showcase {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #374151;
+        }
+
+        /* 미래 전망 스타일 */
+        .future-outlook {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px;
+            border-radius: 25px;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .outlook-title {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .year-badge {
+            background: rgba(255, 255, 255, 0.9);
+            color: #4f6cf0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .roadmap-content h4 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .roadmap-content p {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* 푸터 스타일 */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 50px 40px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            opacity: 0.7;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                min-width: auto;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                text-align: left !important;
+                padding-left: 60px;
+            }
+            
+            .timeline-year {
+                position: absolute;
+                left: 0;
+                top: 0;
+                flex: none;
+                width: 80px;
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+            
+            .timeline-content {
+                margin: 0;
+                margin-top: 50px;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+
+            .timeline-image {
+                flex: none;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .tech-tags {
+                justify-content: center !important;
+            }
+
+            .industry-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .keyword-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap {
+                grid-template-columns: 1fr;
+            }
+
+            .company-table {
+                font-size: 0.9em;
+            }
+
+            .company-table th,
+            .company-table td {
+                padding: 15px 10px;
+            }
+
+            .future-outlook {
+                padding: 30px 20px;
+            }
+
+            .footer {
+                padding: 30px 20px 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 섹션 -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">디스플레이 산업과 기술 현황</h1>
+                <p class="subtitle">디플 취업 대비 종합 가이드</p>
+                <div class="brand-info">
+                    <div class="logo">LETuiN Edu</div>
+                    <div style="opacity: 0.8;">당신의 꿈을 응원합니다</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 네비게이션 -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link active" data-target="tech-evolution">기술 발전</a></li>
+                <li class="nav-item"><a class="nav-link" data-target="industry-trends">산업 동향</a></li>
+                <li class="nav-item"><a class="nav-link" data-target="company-overview">업체 동향</a></li>
+                <li class="nav-item"><a class="nav-link" data-target="latest-tech">최신 기술</a></li>
+            </ul>
+        </nav>
+
+        <!-- 콘텐츠 컨테이너 -->
+        <div class="content-container">
+            <!-- 디스플레이 기술 발전 섹션 -->
+            <section id="tech-evolution" class="section active">
+                <h2 class="section-title">디스플레이 기술 발전사</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970년대</div>
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <h3>LCD 시대의 시작</h3>
+                                <p>전자시계, 계산기 등 소형 기기에 LCD 기술 적용으로 디지털 디스플레이의 새로운 시대가 열렸습니다.</p>
+                                <div class="tech-tags">
+                                    <span class="tag">LCD</span>
+                                    <span class="tag">전자시계</span>
+                                    <span class="tag">계산기</span>
+                                </div>
+                            </div>
+                            <div class="timeline-image">
+                                <img src="https://raw.githubusercontent.com/waterfirst/letuin_pamphlet/main/a.png" alt="LCD 시대의 시작">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">1980년대</div>
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <h3>CRT 전성기</h3>
+                                <p>브라운관 TV의 황금시대로, 대형 디스플레이의 주류 기술로 자리잡았습니다.</p>
+                                <div class="tech-tags">
+                                    <span class="tag">CRT</span>
+                                    <span class="tag">브라운관 TV</span>
+                                    <span class="tag">대형화</span>
+                                </div>
+                            </div>
+                            <div class="timeline-image">
+                                <img src="https://raw.githubusercontent.com/waterfirst/letuin_pamphlet/main/b.png" alt="CRT 전성기">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년대</div>
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <h3>PDP와 LCD 경쟁</h3>
+                                <p>플라즈마 디스플레이와 LCD의 대형화 경쟁이 시작되면서 평판 디스플레이 시대가 개막했습니다.</p>
+                                <div class="tech-tags">
+                                    <span class="tag">PDP</span>
+                                    <span class="tag">LCD 대형화</span>
+                                    <span class="tag">평판화</span>
+                                </div>
+                            </div>
+                            <div class="timeline-image">
+                                <img src="https://raw.githubusercontent.com/waterfirst/letuin_pamphlet/main/c.png" alt="PDP와 LCD 경쟁">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2007년</div>
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <h3>모바일 혁명</h3>
+                                <p>아이폰 출시로 모바일 디스플레이 시장이 급성장하며 터치스크린 시대가 시작되었습니다.</p>
+                                <div class="tech-tags">
+                                    <span class="tag">모바일</span>
+                                    <span class="tag">터치스크린</span>
+                                    <span class="tag">아이폰</span>
+                                </div>
+                            </div>
+                            <div class="timeline-image">
+                                <img src="https://raw.githubusercontent.com/waterfirst/letuin_pamphlet/main/d.png" alt="모바일 혁명">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년대</div>
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <h3>OLED 상용화</h3>
+                                <p>스마트폰과 TV에 OLED 기술이 본격 적용되면서 플렉서블 디스플레이 시대가 열렸습니다.</p>
+                                <div class="tech-tags">
+                                    <span class="tag">OLED</span>
+                                    <span class="tag">플렉서블</span>
+                                    <span class="tag">고화질</span>
+                                </div>
+                            </div>
+                            <div class="timeline-image">
+                                <img src="https://raw.githubusercontent.com/waterfirst/letuin_pamphlet/main/e.png" alt="OLED 상용화">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년대</div>
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <h3>Micro LED 등장</h3>
+                                <p>차세대 디스플레이 기술로 Micro LED가 주목받으며 완벽한 화질과 내구성을 제공합니다.</p>
+                                <div class="tech-tags">
+                                    <span class="tag">Micro LED</span>
+                                    <span class="tag">차세대</span>
+                                    <span class="tag">완벽화질</span>
+                                </div>
+                            </div>
+                            <div class="timeline-image">
+                                <img src="https://raw.githubusercontent.com/waterfirst/letuin_pamphlet/main/fa.png" alt="Micro LED 등장">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 산업 동향 섹션 -->
+            <section id="industry-trends" class="section">
+                <h2 class="section-title">디스플레이 산업 동향</h2>
+                
+                <div class="industry-cards">
+                    <!-- LCD 산업 카드 -->
+                    <div class="industry-card">
+                        <div class="industry-header">
+                            <h3>📺 LCD 산업</h3>
+                            <p>경쟁 구도 변화</p>
+                        </div>
+                        <div class="industry-timeline">
+                            <div class="industry-era">
+                                <div class="era-title">1차전</div>
+                                <div class="countries-grid">
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇯🇵</span>
+                                            일본
+                                        </div>
+                                        <div class="company-list">샤프, 히타치, 후지쯔</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇹🇼</span>
+                                            대만
+                                        </div>
+                                        <div class="company-list">AUO, 이노룩스</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇰🇷</span>
+                                            한국
+                                        </div>
+                                        <div class="company-list">삼성디스플레이, LG디스플레이, 하이디스</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="industry-era">
+                                <div class="era-title">2차전</div>
+                                <div class="countries-grid">
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇨🇳</span>
+                                            중국
+                                        </div>
+                                        <div class="company-list">BOE, CSOT, HKC, CEC Panda, Tianma, Visionox</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇹🇼</span>
+                                            대만
+                                        </div>
+                                        <div class="company-list">AUO, 이노룩스, 폭스콘(샤프)</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇰🇷</span>
+                                            한국
+                                        </div>
+                                        <div class="company-list">삼성디스플레이, LG디스플레이</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇯🇵</span>
+                                            일본
+                                        </div>
+                                        <div class="company-list">JDI, JOLED</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="industry-era">
+                                <div class="era-title">현재</div>
+                                <div class="countries-grid">
+                                    <div class="country-bubble dominant">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇨🇳</span>
+                                            중국 (시장 지배)
+                                        </div>
+                                        <div class="company-list highlight">BOE, CSOT</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇹🇼</span>
+                                            대만
+                                        </div>
+                                        <div class="company-list">AUO, 이노룩스</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OLED 산업 카드 -->
+                    <div class="industry-card">
+                        <div class="industry-header">
+                            <h3>📱 OLED 산업</h3>
+                            <p>경쟁 구도 변화</p>
+                        </div>
+                        <div class="industry-timeline">
+                            <div class="industry-era">
+                                <div class="era-title">태동기</div>
+                                <div class="countries-grid">
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇺🇸</span>
+                                            미국
+                                        </div>
+                                        <div class="company-list">코닥</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇯🇵</span>
+                                            일본
+                                        </div>
+                                        <div class="company-list">소니, 파나소닉, 파이오니아</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="industry-era">
+                                <div class="era-title">1차전</div>
+                                <div class="countries-grid">
+                                    <div class="country-bubble dominant">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇰🇷</span>
+                                            한국 (선도)
+                                        </div>
+                                        <div class="company-list highlight">삼성디스플레이, LG디스플레이</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇯🇵</span>
+                                            일본
+                                        </div>
+                                        <div class="company-list">→JDI, 소니, 파나소닉 →JOLED</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇨🇳</span>
+                                            중국
+                                        </div>
+                                        <div class="company-list">BOE, CSOT, Visionox, Tianma</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="industry-era">
+                                <div class="era-title">현재</div>
+                                <div class="countries-grid">
+                                    <div class="country-bubble dominant">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇰🇷</span>
+                                            한국 (압도적 우위)
+                                        </div>
+                                        <div class="company-list highlight">삼성디스플레이, LG디스플레이</div>
+                                    </div>
+                                    <div class="country-bubble">
+                                        <div class="country-name">
+                                            <span class="country-flag">🇨🇳</span>
+                                            중국
+                                        </div>
+                                        <div class="company-list">BOE, CSOT, Visionox, Tianma</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 업체 동향 섹션 -->
+            <section id="company-overview" class="section">
+                <h2 class="section-title">업체 동향 분석</h2>
+                
+                <!-- OLED 설비 업체 -->
+                <div class="company-section">
+                    <h3 class="company-section-title">
+                        <span class="section-icon">🏭</span>
+                        OLED 설비 업체 동향
+                    </h3>
+                    
+                    <table class="company-table">
+                        <thead>
+                            <tr>
+                                <th>공정 분류</th>
+                                <th>주요 역할</th>
+                                <th>대표 업체</th>
+                                <th>주요 특징 / 경쟁 구도</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="process-name">증착 공정</div>
+                                    <div class="process-description">OLED 유기물 발광층 형성</div>
+                                </td>
+                                <td>화질 및 수율의 핵심 (진공증착)</td>
+                                <td>
+                                    <div class="company-item-table dominant">
+                                        <span class="company-name-table">캐논도키</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                        <span class="company-specialty">독점적 지위</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">AP시스템</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">원익IPS</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">울박</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • 압도적인 시장 점유율 (독점적 지위)<br>
+                                    • 고해상도/고품질 패널 생산 필수<br>
+                                    • 기술력 우위
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="process-name">봉지 공정</div>
+                                    <div class="process-description">OLED 유기물 보호</div>
+                                </td>
+                                <td>수분/산소 차단 - 수명/내구성 핵심</td>
+                                <td>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">AP시스템</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">레이저 봉지 기술</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">원익IPS</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">종합 장비 포트폴리오</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • AP시스템: 레이저 봉지 기술 강점<br>
+                                    • 원익IPS: 종합 장비 포트폴리오<br>
+                                    • 국내 업체 경쟁력 강화
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="process-name">노광 공정</div>
+                                    <div class="process-description">회로 패턴 형성</div>
+                                </td>
+                                <td>빛을 이용 - 해상도/정밀도 핵심</td>
+                                <td>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">캐논</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">니콘</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • 반도체 노광 장비와 유사<br>
+                                    • 고정밀 기술력 요구<br>
+                                    • 대형 기판용 장비 시장 강세
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="process-name">식각 공정</div>
+                                    <div class="process-description">불필요한 부분 제거</div>
+                                </td>
+                                <td>화학/플라즈마로 회로 완성</td>
+                                <td>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">IPS</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">ICD</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">인베니아</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • 건식/습식 식각 기술 경쟁<br>
+                                    • 종합 반도체/디스플레이 장비 업체 영향력
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="process-name">세정 & 검사/측정</div>
+                                    <div class="process-description">품질 관리</div>
+                                </td>
+                                <td>각 공정 후 기판 세정 및 패널 불량 검사</td>
+                                <td>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">케이씨텍</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">세정/CMP</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">이오테크닉스</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">레이저 응용</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">인텍플러스</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">비전 검사</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">APS</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">비전 검사</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • 케이씨텍: 세정/CMP 강점<br>
+                                    • 이오테크닉스: 레이저 응용<br>
+                                    • 인텍플러스/APS: 비전 검사<br>
+                                    • 다양한 국내 업체 포진 및 경쟁
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- OLED 재료 업체 -->
+                <div class="company-section">
+                    <h3 class="company-section-title">
+                        <span class="section-icon">🧪</span>
+                        OLED 재료 업체 동향
+                    </h3>
+                    
+                    <table class="company-table">
+                        <thead>
+                            <tr>
+                                <th>재료 분류</th>
+                                <th>주요 역할</th>
+                                <th>대표 업체</th>
+                                <th>주요 특징 / 경쟁 구도</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="process-name">발광재료 (EML)</div>
+                                    <div class="process-description">RGB 발광층</div>
+                                </td>
+                                <td>OLED의 색상과 발광 효율을 결정하는 핵심 재료</td>
+                                <td>
+                                    <div class="company-item-table dominant">
+                                        <span class="company-name-table">UDC</span>
+                                        <span class="country-flag">🇺🇸</span>
+                                        <span class="company-specialty">인광 재료 원천특허</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">덕산네오룩스</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">삼성SDI</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">머크</span>
+                                        <span class="country-flag">🇩🇪</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">이데미츠 코산</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • UDC: 인광 발광재료 원천특허 다수 보유<br>
+                                    • 고효율 녹색/적색 인광 재료 독보적<br>
+                                    • 삼성SDI, LG화학: 계열사 공급<br>
+                                    • 머크, 이데미츠: 오랜 기술력
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="process-name">공통층 재료</div>
+                                    <div class="process-description">HTL, ETL, HIL, EIL</div>
+                                </td>
+                                <td>정공과 전자를 효율적으로 전달하고 수명 안정화</td>
+                                <td>
+                                    <div class="company-item-table dominant">
+                                        <span class="company-name-table">덕산네오룩스</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">HTL 압도적 점유율</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">LG화학</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">머크</span>
+                                        <span class="country-flag">🇩🇪</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">이데미츠 코산</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • 덕산네오룩스: HTL 시장 압도적 점유율<br>
+                                    • 다양한 기능성 유기 재료<br>
+                                    • 특정 성능 개선 파트너십 중요
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="process-name">포토레지스트 (PR)</div>
+                                    <div class="process-description">감광성 고분자</div>
+                                </td>
+                                <td>빛에 반응하여 화학적 성질 변화, 미세 패턴 구현</td>
+                                <td>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">JSR</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                        <span class="company-specialty">고해상도 PR</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">도쿄오카공업</span>
+                                        <span class="country-flag">🇯🇵</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">동진쎄미켐</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">덕산네오룩스</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                    </div>
+                                    <div class="company-item-table">
+                                        <span class="company-name-table">동우화인켐</span>
+                                        <span class="country-flag">🇰🇷</span>
+                                        <span class="company-specialty">컬러 필터 PR</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    • 일본 기업 강세: JSR, TOK 등<br>
+                                    • 고해상도(EUV PR) 독보적<br>
+                                    • 한국 기업 추격: 동진쎄미켐, 덕산네오룩스<br>
+                                    • 컬러 필터 PR: 색상 구현 핵심
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 최신 기술 트렌드 섹션 -->
+            <section id="latest-tech" class="section">
+                <h2 class="section-title">최신 기술 트렌드</h2>
+                
+                <!-- SID 2025 주요 키워드 -->
+                <h3 style="font-size: 1.8em; color: #1e293b; text-align: center; margin-bottom: 40px; font-weight: 600;">SID 2025 산호세 주요 키워드</h3>
+                
+                <div class="keyword-grid">
+                    <div class="keyword-card automotive">
+                        <div class="keyword-icon">🚗</div>
+                        <h4>Automotive</h4>
+                        <p>차량용 디스플레이의 혁신</p>
+                        <ul class="feature-list">
+                            <li>대형 곡면 디스플레이</li>
+                            <li>윈드쉴드 프로젝션</li>
+                            <li>AR/VR 통합 인터페이스</li>
+                            <li>전체 대시보드 디스플레이화</li>
+                        </ul>
+                        <div class="companies-showcase">
+                            <strong>주요 전시업체:</strong> BOE, LGD, Innolux
+                        </div>
+                    </div>
+
+                    <div class="keyword-card microled">
+                        <div class="keyword-icon">💎</div>
+                        <h4>Micro LED</h4>
+                        <p>차세대 디스플레이 기술</p>
+                        <ul class="feature-list">
+                            <li>완벽한 블랙 표현</li>
+                            <li>극고휘도 구현</li>
+                            <li>초장수명 (10만시간+)</li>
+                            <li>모듈형 확장 가능</li>
+                        </ul>
+                        <div class="companies-showcase">
+                            <strong>주요 개발업체:</strong> 삼성, LG, Sony
+                        </div>
+                    </div>
+
+                    <div class="keyword-card flexible">
+                        <div class="keyword-icon">📱</div>
+                        <h4>Flexible & Foldable</h4>
+                        <p>플렉서블 디스플레이 진화</p>
+                        <ul class="feature-list">
+                            <li>폴더블 스마트폰</li>
+                            <li>롤러블 TV</li>
+                            <li>웨어러블 디스플레이</li>
+                            <li>투명 디스플레이</li>
+                        </ul>
+                        <div class="companies-showcase">
+                            <strong>선도업체:</strong> 삼성디스플레이, LG디스플레이
+                        </div>
+                    </div>
+
+                    <div class="keyword-card quantum">
+                        <div class="keyword-icon">🌈</div>
+                        <h4>Quantum Dot</h4>
+                        <p>색재현성 혁신 기술</p>
+                        <ul class="feature-list">
+                            <li>100% DCI-P3 색재현</li>
+                            <li>Cadmium-free QD</li>
+                            <li>QD-OLED 하이브리드</li>
+                            <li>전력 효율 개선</li>
+                        </ul>
+                        <div class="companies-showcase">
+                            <strong>주요업체:</strong> 삼성, TCL, Hisense
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 미래 전망 -->
+                <div class="future-outlook">
+                    <h3 class="outlook-title">디스플레이 기술 로드맵</h3>
+                    
+                    <div class="roadmap">
+                        <div class="roadmap-item">
+                            <div class="year-badge">2025</div>
+                            <div class="roadmap-content">
+                                <h4>QD-OLED 대중화</h4>
+                                <p>프리미엄 TV 시장에서 QD-OLED 기술 확산</p>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-item">
+                            <div class="year-badge">2027</div>
+                            <div class="roadmap-content">
+                                <h4>Micro LED 중형 상용화</h4>
+                                <p>75인치 이상 대형 TV에서 Micro LED 상용화 시작</p>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-item">
+                            <div class="year-badge">2030</div>
+                            <div class="roadmap-content">
+                                <h4>투명/플렉서블 일상화</h4>
+                                <p>투명 디스플레이와 완전 플렉서블 디바이스 대중화</p>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-item">
+                            <div class="year-badge">2035</div>
+                            <div class="roadmap-content">
+                                <h4>홀로그램 디스플레이</h4>
+                                <p>공간 디스플레이 기술의 상용화</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 푸터 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LETuiN Edu</h4>
+                    <p>당신의 꿈을 응원합니다</p>
+                </div>
+                <div class="footer-section">
+                    <h4>디스플레이 취업 가이드</h4>
+                    <p>최신 기술 트렌드와 업계 동향을 한눈에</p>
+                </div>
+                <div class="footer-section">
+                    <h4>문의사항</h4>
+                    <p>질문이 있으시면 언제든 연락주세요!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LETuiN Edu. 모든 권리 보유.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 탭 네비게이션 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 모든 네비게이션 링크에서 active 클래스 제거
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // 클릭된 링크에 active 클래스 추가
+                    this.classList.add('active');
+                    
+                    // 모든 섹션 숨기기
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // 해당 섹션 보이기
+                    const targetId = this.getAttribute('data-target');
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+
+            // 이미지 로드 에러 처리
+            const images = document.querySelectorAll('.timeline-image img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    this.parentElement.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
